@@ -28,9 +28,9 @@ Route::get('/about', function () {
 });
 
 Route::resource('students', StudentController::class)->middleware('auth');
-Route::resource('menus', MenuController::class);
-Route::resource('groups', GroupController::class);
-Route::resource('users', UserController::class);
+Route::resource('menus', MenuController::class)->middleware('auth');
+Route::resource('groups', GroupController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
 
 Route::name('user.')->group(function(){
     Route::view('/private', 'private')->middleware('auth')->name('private');
